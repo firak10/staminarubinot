@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Stamina Otimizada - Rubinot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Stamina</h1>
+        <div class="subtitle">Rubinot MMORPG</div>
+
+        <div class="form-group">
+            <label for="currentStamina">Stamina Atual (Formato HH:MM)</label>
+            <input type="text" id="currentStamina" placeholder="Ex: 35:30" maxlength="5">
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="usePotion">
+            <label for="usePotion">Simular uso de 1 Poção (+1h na Stamina Verde)</label>
+        </div>
+
+        <button onclick="calculateStamina()">Calcular Regeneração</button>
+
+        <div class="results" id="resultsBox">
+            
+            <div class="method-card" style="border-left: 4px solid var(--accent-blue);">
+                <div class="method-title text-blue">
+                    <span>Método 1: Zona de Proteção (PZ)</span>
+                    <span style="font-size: 12px; color: var(--text-muted);">Recomendado</span>
+                </div>
+                <div class="result-row">
+                    <span>Tempo até Stamina Verde (39h):</span>
+                    <span class="val" id="pzToGreen">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (39h):</span>
+                    <span class="val text-blue" id="datePzToGreen">-</span>
+                </div>
+                <div class="result-row" style="margin-top: 5px; padding-top: 10px; border-top: 1px dashed #29292e;">
+                    <span>Tempo total até Full (42h):</span>
+                    <span class="val" id="pzToFull">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (42h Full):</span>
+                    <span class="val text-orange" id="datePzToFull">-</span>
+                </div>
+            </div>
+
+            <div class="method-card" style="border-left: 4px solid var(--primary-color);">
+                <div class="method-title text-green">
+                    <span>Método 2: Offline / Dormindo</span>
+                </div>
+                <div class="result-row">
+                    <span>Tempo até Stamina Verde (39h):</span>
+                    <span class="val" id="offToGreen">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (39h):</span>
+                    <span class="val text-green" id="dateOffToGreen">-</span>
+                </div>
+                <div class="result-row" style="margin-top: 5px; padding-top: 10px; border-top: 1px dashed #29292e;">
+                    <span>Tempo total até Full (42h):</span>
+                    <span class="val" id="offToFull">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (42h Full):</span>
+                    <span class="val text-orange" id="dateOffToFull">-</span>
+                </div>
+            </div>
+
+            <div class="method-card" style="border-left: 4px solid var(--accent-orange);">
+                <div class="method-title text-orange">
+                    <span>Método 3: No Trainer (Atacando)</span>
+                </div>
+                <div class="result-row">
+                    <span>Tempo até Stamina Verde (39h):</span>
+                    <span class="val" id="trainToGreen">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (39h):</span>
+                    <span class="val text-orange" id="dateTrainToGreen">-</span>
+                </div>
+                <div class="result-row" style="margin-top: 5px; padding-top: 10px; border-top: 1px dashed #29292e;">
+                    <span>Tempo total até Full (42h):</span>
+                    <span class="val" id="trainToFull">-</span>
+                </div>
+                <div class="result-row">
+                    <span>Horário exato (42h Full):</span>
+                    <span class="val text-orange" id="dateTrainToFull">-</span>
+                </div>
+            </div>
+
+            <div id="potionAdvice" class="alert-box"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
